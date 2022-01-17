@@ -9,6 +9,9 @@ const TrackWalletsPage = () => {
   const { Moralis } = useMoralis();
   const [address, setAddress] = useState('');
   const [name, setName] = useState('');
+  // const [telegram, setTelegram] = useState(false);
+  // const [email, setEmail] = useState(false);
+  // const [twitter, setTwitter] = useState(false);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -19,12 +22,26 @@ const TrackWalletsPage = () => {
     } else if (name === 'name') {
       setName(value);
     }
+    // else if (name === 'telegram') {
+    //   setTelegram(!telegram);
+    // } else if (name === 'email') {
+    //   setEmail(!email);
+    // } else if (name === 'twitter') {
+    //   setTwitter(!twitter);
+    // }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const params = { address: address.toLowerCase() };
+      // const telegramAlert = telegram && 'telegram';
+      // const emailAlert = email && 'email';
+      // const twitterAlert = twitter && 'twitter';
+      // const alertMethods = [telegramAlert, emailAlert, twitterAlert].filter(
+      //   (alert) => alert !== false
+      // );
+
+      const params = { address: address.toLowerCase(), name };
       await Moralis.Cloud.run('watchAddress', params);
       setAddress('');
       setName('');
@@ -54,6 +71,35 @@ const TrackWalletsPage = () => {
           minLength={1}
           value={name}
         />
+        {/* <div className="flex mt-3">
+          <div className="mr-5 text-gray-400">
+            <Input
+              type="checkBox"
+              name="telegram"
+              handleChange={handleChange}
+              value={telegram}
+            />{' '}
+            Telegram
+          </div>
+          {/* <div className="mr-5 text-gray-400">
+            <Input
+              type="checkBox"
+              name="email"
+              handleChange={handleChange}
+              value={email}
+            />{' '}
+            Email
+          </div>
+          <div className="mr-5 text-gray-400">
+            <Input
+              type="checkBox"
+              name="twitter"
+              handleChange={handleChange}
+              value={twitter}
+            />{' '}
+            Twitter
+          </div> */}
+        {/* </div> */}
         <Button
           handleSubmit={handleSubmit}
           disabled={disabled}
