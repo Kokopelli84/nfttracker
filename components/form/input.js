@@ -1,7 +1,8 @@
-const Input = ({ type, name, placeholder, handleChange, minLength }) => {
+const Input = ({ type, name, placeholder, handleChange, minLength, value }) => {
   return (
     <input
       type={type || 'text'}
+      value={value}
       name={name}
       id=""
       placeholder={placeholder}

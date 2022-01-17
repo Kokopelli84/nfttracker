@@ -8,9 +8,17 @@ import { useState } from 'react';
 const TrackWalletsPage = () => {
   const { Moralis } = useMoralis();
   const [address, setAddress] = useState('');
+  const [name, setName] = useState('');
 
   const handleChange = (e) => {
-    setAddress(e.target.value);
+    const value = e.target.value;
+    const name = e.target.name;
+
+    if (name === 'address') {
+      setAddress(value);
+    } else if (name === 'name') {
+      setName(value);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -18,10 +26,15 @@ const TrackWalletsPage = () => {
     try {
       const params = { address: address.toLowerCase() };
       await Moralis.Cloud.run('watchAddress', params);
+      setAddress('');
+      setName('');
     } catch (err) {
-      console.log(err);
+      throw new Error(err.message);
     }
   };
+
+  const disabled = !name || !address || (!address.length === 42 && 'disabled');
+
   return (
     <ContentWrapper>
       <Form title="Track Wallet" titleColour={'text-white'}>
@@ -31,8 +44,21 @@ const TrackWalletsPage = () => {
           placeholder="ETH Address"
           handleChange={handleChange}
           minLength={42}
+          value={address}
         />
-        <Button handleSubmit={handleSubmit} disabled={''} action="Track" />
+        <Input
+          type="text"
+          name="name"
+          placeholder="Wallet Name"
+          handleChange={handleChange}
+          minLength={1}
+          value={name}
+        />
+        <Button
+          handleSubmit={handleSubmit}
+          disabled={disabled}
+          action="Track"
+        />
       </Form>
     </ContentWrapper>
   );

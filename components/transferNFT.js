@@ -38,7 +38,7 @@ const TransferNFT = () => {
       });
     } catch (err) {
       dispatch(changeResponse(err.message));
-      dispatch(changeResponse('error'));
+      dispatch(changeTxStatus('error'));
     }
   };
 
