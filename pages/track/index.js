@@ -117,7 +117,7 @@ const TrackWalletsPage = () => {
             Twitter
           </div> */}
         {/* </div> */}
-        <button className="text-blue-500 w-fit">
+        <button className="text-blue-500 w-fit mb-3 ">
           <FaInfoCircle className="inline mr-2" />
           Follow these instructions to get your Telegram chat ID
         </button>

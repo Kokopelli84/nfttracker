@@ -5,6 +5,7 @@ import Button from '../../components/button';
 import { FaEthereum } from 'react-icons/fa';
 import { useTokenPrice } from 'react-moralis';
 import { useEffect } from 'react';
+import dollarValue from '../../helpers/dollarValue';
 
 const NFTDetailPage = () => {
   const { fetchTokenPrice, data: formattedData } = useTokenPrice({
@@ -22,10 +23,13 @@ const NFTDetailPage = () => {
   const nft = nfts.length && nfts.find((nft) => nft.id === parseInt(id));
   const currentPrice =
     nft.sell_orders && nft.sell_orders[0].current_price.slice(0, 3);
-  let dollarUSLocale = Intl.NumberFormat('en-US');
-  const ethPrice =
-    formattedData &&
-    dollarUSLocale.format(formattedData.usdPrice * currentPrice).slice(0, -1);
+
+  const currentDollarValue =
+    formattedData && dollarValue(formattedData.usdPrice, currentPrice);
+
+  const lastSale = +nft.last_sale.payment_token.eth_price;
+  const lastDollarValue =
+    formattedData && dollarValue(formattedData.usdPrice, lastSale);
 
   return nft ? (
     <div className="mx-44">
@@ -47,14 +51,24 @@ const NFTDetailPage = () => {
         <div className="flex-1 ">
           <h1 className="text-3xl text-white mb-5">{nft.name}</h1>
           <div className="text-gray-400 border border-gray-500 h-fit rounded-lg p-5 mb-5">
-            <h2 className="mb-3 ">Current Price</h2>
-            <div className="flex items-center text-white ">
+            <h2 className="mb-3 text-lg">Current Price</h2>
+            <div className="flex items-center text-white mb-5">
               <FaEthereum className="mr-1 text-3xl" />
               <div className="text-3xl mr-3">
                 {currentPrice ? currentPrice : 'Not For Sale'}
               </div>
               <div className="text-gray-400">
-                {currentPrice && `($ ${ethPrice})`}
+                {currentPrice && `($${currentDollarValue})`}
+              </div>
+            </div>
+            <h2 className="mb-3 text-lg">Last Sale Price</h2>
+            <div className="flex items-center text-white mb-5">
+              <FaEthereum className="mr-1 text-3xl" />
+              <div className="text-3xl mr-3">
+                {lastSale ? lastSale : 'No last sale'}
+              </div>
+              <div className="text-gray-400">
+                {lastSale && `($${lastDollarValue})`}
               </div>
             </div>
           </div>
