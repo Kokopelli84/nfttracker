@@ -11,6 +11,7 @@ const TrackWalletsPage = () => {
   const [address, setAddress] = useState('');
   const [name, setName] = useState('');
   const [chatId, setChatId] = useState('');
+  const [success, setSuccess] = useState('hidden');
   // const [telegram, setTelegram] = useState(false);
   // const [email, setEmail] = useState(false);
   // const [twitter, setTwitter] = useState(false);
@@ -50,6 +51,8 @@ const TrackWalletsPage = () => {
       setAddress('');
       setName('');
       setChatId('');
+      setSuccess('block');
+      setTimeout(() => setSuccess('hidden'), 5000);
     } catch (err) {
       throw new Error(err.message);
     }
@@ -121,6 +124,13 @@ const TrackWalletsPage = () => {
           <FaInfoCircle className="inline mr-2" />
           Follow these instructions to get your Telegram chat ID
         </button>
+        <div className="flex justify-center">
+          <div
+            className={`bg-green-500 w-1/3 rounded-md p-2 text-center text-black font-semibold ${success}`}
+          >
+            Wallet Tracked!
+          </div>
+        </div>
         <Button
           handleSubmit={handleSubmit}
           disabled={disabled}
