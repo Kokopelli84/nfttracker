@@ -56,6 +56,7 @@ const TransferNFT = () => {
             placeholder="Recipient"
             handleChange={handleChange}
             minLength="42"
+            textColour={'text-black'}
           />
           <Button
             handleSubmit={handleSubmit}

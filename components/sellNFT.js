@@ -56,6 +56,7 @@ const SellNFT = () => {
             placeholder="Listing price (ETH)"
             handleChange={handleChange}
             minLength="1"
+            textColour={'text-black'}
           />
           <Button
             handleSubmit={handleSubmit}

@@ -1,4 +1,12 @@
-const Input = ({ type, name, placeholder, handleChange, minLength, value }) => {
+const Input = ({
+  type,
+  name,
+  placeholder,
+  handleChange,
+  minLength,
+  value,
+  textColour,
+}) => {
   return (
     <input
       type={type || 'text'}
@@ -9,7 +17,9 @@ const Input = ({ type, name, placeholder, handleChange, minLength, value }) => {
       required
       onChange={handleChange}
       minLength={minLength}
-      className="mb-3 border-gray-300 border p-2 bg-transparent text-white rounded-lg"
+      className={`mb-3 border-gray-300 border p-2 bg-transparent ${
+        textColour || 'text-white'
+      } rounded-lg`}
     />
   );
 };
