@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
             </div>
             <div className="flex-1 flex flex-col">
               <Account />
-              <div className="p-10 overflow-y-auto h-full">
+              <div className="py-10 px-20 overflow-y-auto h-full">
                 <Component {...pageProps} />
               </div>
             </div>

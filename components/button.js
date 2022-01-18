@@ -1,7 +1,9 @@
-const Button = ({ text, click }) => {
+const Button = ({ text, click, classNames }) => {
   return (
     <button
-      className="gradient p-3 rounded-md font-semibold text-white"
+      className={
+        'gradient p-3 rounded-md font-semibold text-white ' + classNames
+      }
       onClick={() => click()}
     >
       {text}

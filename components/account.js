@@ -8,7 +8,7 @@ const Account = () => {
   const buttonText = account ? formattedAccount : 'Authenticate';
 
   return (
-    <div className="auth flex flex-row justify-end text-white pt-7 px-10 w-full">
+    <div className="auth flex flex-row justify-end text-white pt-7 px-20 w-full">
       <Button text={buttonText} click={authenticate} />
     </div>
   );

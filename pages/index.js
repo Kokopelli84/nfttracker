@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import Modal from '../components/modal';
+import ContentWrapper from '../components/contentWrapper';
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-full">
       <Head>
         <title>NiftyTracker</title>
         <meta name="description" content="A place for all of your NFT needs" />
@@ -14,7 +15,22 @@ export default function Home() {
           crossOrigin="anonymous"
         />
       </Head>
-      <Modal />
+      <div className="flex justify-center items-center h-full">
+        <div className="bg-white w-1/3 text-center p-10 rounded-lg ">
+          <h1 className="text-3xl font-semibold mb-5">
+            Welcome to NiftyTracker!
+          </h1>
+          <p className="mb-5">
+            This is a place for you to manage your NFT portolio, mint new ones &
+            track wallets of interest.
+          </p>
+          <p>
+            Use the navigation on the left to find what you need & make sure you
+            are authenticated through MetaMask using the button on the top left
+            of the page.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -25,14 +25,7 @@ const Nav = () => {
               </div>
             </Link>
           </li>
-          <li className={checkPath('/mint')}>
-            <Link href="/mint" passHref>
-              <div className="cursor-pointer flex items-center">
-                <FaEthereum className="inline mr-4 " />
-                Mint NFT
-              </div>
-            </Link>
-          </li>
+
           <li className={checkPath('/lazymint')}>
             <Link href="/lazymint" passHref>
               <div className="cursor-pointer flex items-center">
