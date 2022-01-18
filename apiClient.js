@@ -1,10 +1,13 @@
 const BASE_URL = 'https://testnets-api.opensea.io';
 
-function fetchRequest(path, options) {
-  return fetch(BASE_URL + path, options)
-    .then((res) => (res.status < 404 ? res : Promise.reject()))
-    .then((res) => (res.status !== 204 ? res.json() : res))
-    .catch((err) => console.error(err));
+async function fetchRequest(path, options) {
+  try {
+    const res = await fetch(BASE_URL + path, options);
+    const res_1 = res.status < 404 ? res : Promise.reject();
+    return res_1.status !== 204 ? res_1.json() : res_1;
+  } catch (err) {
+    return console.error(err);
+  }
 }
 
 const getNFTs = (address, dir = 'desc', offset = 0, limit = 50) => {
