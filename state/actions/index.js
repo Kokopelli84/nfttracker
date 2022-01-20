@@ -1,4 +1,4 @@
-import getNFTs from '../../apiClient';
+import getNFTs from '../../helpers/apiClient';
 import { actionTypes } from './actionTypes';
 
 export const fetchNFTs = (address) => {
