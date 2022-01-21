@@ -1,7 +1,10 @@
 {
   "root": true,
-  "extends": ["next/core-web-vitals"],
+  "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript"],
   "plugins": ["testing-library"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "overrides": [
     // Only uses Testing Library lint rules in test files
     {
