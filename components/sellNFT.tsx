@@ -1,28 +1,27 @@
-import { useState } from 'react';
+import React, { ChangeEventHandler, useState } from 'react';
 import { useMoralis } from 'react-moralis';
-import { useSelector, useDispatch } from 'react-redux';
-import { changeTxStatus, changeResponse } from '../state/actions';
-import Form from './form/form';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeResponse, changeTxStatus } from '../state/actions';
 import Button from './form/button';
+import Form from './form/form';
 import Input from './form/input';
 import TxStatus from './txStatus';
-import Modal from '../components/modal';
 
 const SellNFT = () => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState<number>(0);
   const { current } = useSelector((state) => state);
   const { Moralis, account } = useMoralis();
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    setAmount(e.target.value);
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setAmount(e.target.valueAsNumber);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     dispatch(changeTxStatus('pending'));
     try {
-      await Moralis.enableWeb3();
+      await(Moralis as any).enableWeb3();
 
       await Moralis.Plugins.opensea
         .createSellOrder({
@@ -38,8 +37,10 @@ const SellNFT = () => {
           dispatch(changeTxStatus('success'));
         });
     } catch (err) {
-      dispatch(changeResponse(err.message));
-      dispatch(changeTxStatus('error'));
+      if (err instanceof Error) {
+        dispatch(changeResponse(err.message));
+        dispatch(changeTxStatus('error'));
+      }
     }
   };
 
@@ -50,21 +51,21 @@ const SellNFT = () => {
   return (
     <TxStatus message={message} link={link} linkText={linkText}>
       <div>
-        <Form action="" className="flex flex-col " title={current.name}>
+        <Form handleSubmit={handleSubmit} title={current.name}>
+
           <Input
+            value={amount}
             name="amount"
+            type="number"
             placeholder="Listing price (ETH)"
             handleChange={handleChange}
-            minLength="1"
-            textColour={'text-black'}
+            minLength={1}
+            textColour="text-black"
           />
           <Button
-            handleSubmit={handleSubmit}
-            type="submit"
-            state={amount}
-            minLength={1}
+            disabled={false}
             action="Sell"
-          ></Button>
+           />
         </Form>
       </div>
     </TxStatus>

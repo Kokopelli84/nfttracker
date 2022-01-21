@@ -1,6 +1,11 @@
+import { FunctionComponent } from 'react'
 import Fail from '../status/error';
 
-const ErrorMessage = ({ error }) => {
+interface IProps {
+  error: string,
+}
+
+const ErrorMessage: FunctionComponent<IProps> = ({ error }) => {
   return (
     <div>
       <div className="flex justify-center">

@@ -1,6 +1,14 @@
+import { FunctionComponent } from 'react'
 import Success from '../status/success';
 
-const SuccessMessage = ({ message, info, link, linkText }) => {
+interface IProps {
+  message: string,
+  info: string,
+  link: string,
+  linkText: string
+}
+
+const SuccessMessage: FunctionComponent<IProps> = ({ message, info, link, linkText }) => {
   return (
     <div>
       <div className="flex justify-center">

@@ -1,9 +1,14 @@
 import Input from './form/input';
 import Form from './form/form';
 import Button from './form/button';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const MintForm = ({ title, handleSubmit }) => {
+interface MintFormProps {
+  title: string,
+  handleSubmit: () => void
+}
+
+const MintForm = ({ title, handleSubmit }: MintFormProps) => {
   const [nameInput, setNameInput] = useState('');
   const [descriptionInput, setDescriptionInput] = useState('');
   const [file, setFile] = useState('');

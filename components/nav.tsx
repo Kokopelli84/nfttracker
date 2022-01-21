@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 const Nav = () => {
   const router = useRouter();
 
-  const checkPath = (path) => {
+  const checkPath = (path: string) => {
     return path === router.pathname
       ? 'text-white mb-5 opacity-100'
       : 'mb-5 opacity-75';

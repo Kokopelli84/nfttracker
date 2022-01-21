@@ -1,4 +1,10 @@
-const ContentWrapper = ({ children }) => {
+import { ReactNode } from "react";
+
+interface ContentWrapperProps {
+  children: ReactNode
+}
+
+const ContentWrapper = ({ children }: ContentWrapperProps) => {
   return (
     <div className="flex justify-center items-center h-full">
       <div className="w-1/3 bg-transparent  border-2 border-gray-500 p-5 rounded-lg">

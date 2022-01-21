@@ -1,6 +1,6 @@
 const BASE_URL = 'https://testnets-api.opensea.io';
 
-async function fetchRequest(path, options) {
+async function fetchRequest(path: string, options) {
   try {
     const res = await fetch(BASE_URL + path, options);
     const res_1 = res.status < 404 ? res : Promise.reject();

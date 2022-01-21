@@ -1,14 +1,23 @@
+import React, { ReactNode } from 'react'
 import { useSelector } from 'react-redux';
 import PendingMessage from './messages/pending';
 import SuccessMessage from './messages/success';
 import FailMessage from './messages/error';
 
-const TxStatus = ({ message, link, linkText, info, children }) => {
+interface IProps {
+  message: string,
+  link: string,
+  linkText: string,
+  info?: string,
+  children: ReactNode
+}
+
+const TxStatus = ({ message, link, linkText, info, children }: IProps) => {
   const { txStatus, response } = useSelector((state) => state);
 
   if (txStatus === 'pending') {
     return <PendingMessage />;
-  } else if (txStatus === 'success') {
+  } if (txStatus === 'success') {
     return (
       <SuccessMessage
         message={message}
@@ -17,11 +26,11 @@ const TxStatus = ({ message, link, linkText, info, children }) => {
         info={info}
       />
     );
-  } else if (txStatus === 'error') {
+  } if (txStatus === 'error') {
     return <FailMessage error={response} />;
-  } else {
-    return children;
   }
+    return <>{children}</>;
+
 };
 
 export default TxStatus;
