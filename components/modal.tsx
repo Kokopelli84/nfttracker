@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import ClientOnlyPortal from './ClientOnlyPortal';
 import { FaTimes } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { changeTxStatus, changeResponse } from '../state/actions';
 
-const Modal = ({ show, cancel, children }) => {
+interface ModalProps {
+  show: boolean,
+  cancel: () => void,
+  children: ReactNode,
+}
+
+const Modal = ({ show, cancel, children }: ModalProps) => {
   const dispatch = useDispatch();
   if (show) {
     return (

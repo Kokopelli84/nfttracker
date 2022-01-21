@@ -1,8 +1,10 @@
+import React from 'react';
 import Image from 'next/image';
-import { FaInfoCircle, FaPaperPlane, FaTag } from 'react-icons/fa';
 import Link from 'next/link';
-import { useSelector, useDispatch } from 'react-redux';
+import { FaInfoCircle, FaPaperPlane, FaTag } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 import { changeModalContent } from '../state/actions';
+
 
 const NFTCard = ({ nft, handleShowModal }) => {
   const dispatch = useDispatch();
@@ -19,7 +21,7 @@ const NFTCard = ({ nft, handleShowModal }) => {
           width={300}
           height={300}
           className="rounded-xl"
-        ></Image>
+         />
         {currentPrice && (
           <a
             href={`https://testnets.opensea.io/assets/${nft.asset_contract.address}/${nft.token_id}`}

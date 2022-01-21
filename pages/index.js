@@ -2,8 +2,6 @@ import Head from 'next/head';
 import Modal from '../components/modal';
 import ContentWrapper from '../components/contentWrapper';
 
-// hello
-
 export default function Home() {
   return (
     <div className='h-full'>

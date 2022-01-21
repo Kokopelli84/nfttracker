@@ -12,5 +12,9 @@
       "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
       "extends": ["plugin:testing-library/react"]
     }
-  ]
+  ],
+  "rules": {
+    "react/function-component-definition": "off",
+    "react/require-default-props": "off"
+  }
 }

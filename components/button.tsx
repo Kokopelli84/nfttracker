@@ -1,4 +1,12 @@
-const Button = ({ text, click, classNames }) => {
+import { FunctionComponent } from 'react'
+
+interface IProps {
+  text: string,
+  click: () => void,
+  classNames: string,
+}
+
+const Button: FunctionComponent<IProps> = ({ text, click, classNames }) => {
   return (
     <button
       className={
