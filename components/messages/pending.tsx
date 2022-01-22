@@ -1,7 +1,7 @@
+import React from 'react';
 import Pending from '../status/pending';
 
-const PendingMessage = () => {
-  return (
+const PendingMessage = () => (
     <div>
       <div className="flex justify-center">
         <Pending />
@@ -16,6 +16,5 @@ const PendingMessage = () => {
       </div>
     </div>
   );
-};
 
 export default PendingMessage;

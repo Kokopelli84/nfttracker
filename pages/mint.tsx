@@ -1,21 +1,22 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useMoralis } from 'react-moralis';
 import ContentWrapper from '../components/contentWrapper';
 import MintForm from '../components/mintForm';
 import Modal from '../components/modal';
 import TxStatus from '../components/txStatus';
+
 const Web3 = require('web3');
 
 const MintPage = () => {
   const { Moralis } = useMoralis();
-  let web3 = useRef(null);
+  const web3 = useRef(null);
   const contract = process.env.NEXT_PUBLIC_CONTRACT;
 
   useEffect(() => {
     web3.current = new Web3(window.ethereum);
   }, []);
 
-  const mintToken = async (_uri) => {
+  const mintToken = async (_uri: string) => {
     const encodedFunction = web3.current.eth.abi.encodeFunctionCall(
       {
         name: 'mintToken',

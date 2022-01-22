@@ -1,14 +1,15 @@
-import { FaEthereum, FaChartLine, FaCrosshairs } from 'react-icons/fa';
-import { RiZzzFill } from 'react-icons/ri';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React from 'react';
+import { FaChartLine, FaCrosshairs } from 'react-icons/fa';
+import { RiZzzFill } from 'react-icons/ri';
 
 const Nav = () => {
   const router = useRouter();
 
-  const checkPath = (path: string) => {
-    return path === router.pathname ? 'text-white mb-5 opacity-100' : 'mb-5 opacity-75';
-  };
+  const checkPath = (path: string) => path === router.pathname
+      ? 'text-white mb-5 opacity-100'
+      : 'mb-5 opacity-75';
 
   return (
     <div className="h-full">

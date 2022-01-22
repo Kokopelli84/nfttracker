@@ -1,10 +1,10 @@
+import React, { useState } from 'react';
+import { FaInfoCircle } from 'react-icons/fa';
+import { useMoralis } from 'react-moralis';
+import ContentWrapper from '../../components/contentWrapper';
+import Button from '../../components/form/button';
 import Form from '../../components/form/form';
 import Input from '../../components/form/input';
-import Button from '../../components/form/button';
-import ContentWrapper from '../../components/contentWrapper';
-import { useMoralis } from 'react-moralis';
-import { useState } from 'react';
-import { FaInfoCircle } from 'react-icons/fa';
 
 const TrackWalletsPage = () => {
   const { Moralis } = useMoralis();
@@ -17,8 +17,8 @@ const TrackWalletsPage = () => {
   // const [twitter, setTwitter] = useState(false);
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
+    const {value} = e.target;
+    const {name} = e.target;
 
     if (name === 'address') {
       setAddress(value);
@@ -54,7 +54,9 @@ const TrackWalletsPage = () => {
       setSuccess('block');
       setTimeout(() => setSuccess('hidden'), 5000);
     } catch (err) {
-      throw new Error(err.message);
+      if(err instanceof Error) {
+        throw new Error(err.message);
+      }
     }
   };
 
@@ -66,13 +68,13 @@ const TrackWalletsPage = () => {
 
   return (
     <ContentWrapper>
-      <Form title="Track Wallet" titleColour={'text-white'}>
+      <Form title="Track Wallet" titleColour="text-white">
         <Input
           type="text"
           name="address"
           placeholder="ETH Address"
           handleChange={handleChange}
-          minLength={42}
+          minLength="42"
           value={address}
         />
         <Input
@@ -80,7 +82,7 @@ const TrackWalletsPage = () => {
           name="name"
           placeholder="Wallet Name"
           handleChange={handleChange}
-          minLength={1}
+          minLength="1"
           value={name}
         />
         <Input
@@ -88,7 +90,7 @@ const TrackWalletsPage = () => {
           name="chatId"
           placeholder="Telegram Chat ID"
           handleChange={handleChange}
-          minLength={14}
+          minLength="14"
           value={chatId}
         />
         {/* <div className="flex mt-3">
@@ -120,7 +122,7 @@ const TrackWalletsPage = () => {
             Twitter
           </div> */}
         {/* </div> */}
-        <button className="text-blue-500 w-fit mb-3 ">
+        <button type="button" className="text-blue-500 w-fit mb-3 ">
           <FaInfoCircle className="inline mr-2" />
           Follow these instructions to get your Telegram chat ID
         </button>

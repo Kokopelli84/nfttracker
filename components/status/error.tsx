@@ -1,5 +1,6 @@
-const Error = () => {
-  return (
+import React from 'react';
+
+const Error = () => (
     <svg
       className="crossmark addClass animateElement"
       xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +25,5 @@ const Error = () => {
       />
     </svg>
   );
-};
 
 export default Error;

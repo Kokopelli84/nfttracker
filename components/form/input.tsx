@@ -1,13 +1,13 @@
 import React, { ChangeEventHandler } from "react";
 
 interface IProps {
-  type: string,
+  type?: string,
   name: string,
-  placeholder: string,
+  placeholder?: string,
   handleChange: ChangeEventHandler<HTMLInputElement>,
-  minLength: number,
-  value: string | number,
-  textColour: string,
+  minLength?: string,
+  value?: string | number,
+  textColour?: string,
 }
 
 const Input = ({

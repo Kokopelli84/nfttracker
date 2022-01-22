@@ -59,7 +59,7 @@ const SellNFT = () => {
             type="number"
             placeholder="Listing price (ETH)"
             handleChange={handleChange}
-            minLength={1}
+            minLength="1"
             textColour="text-black"
           />
           <Button
