@@ -4,7 +4,7 @@ import Home from '@/pages/index';
 describe('Home', () => {
   it('renders a heading', () => {
     render(<Home />);
-
+    console.log('hi');
     const heading = screen.getByText(/Welcome to NiftyTracker!/i);
 
     expect(heading).toBeInTheDocument();
