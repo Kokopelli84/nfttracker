@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMoralis } from 'react-moralis';
 import { useDispatch, useSelector } from 'react-redux';
 import AuthMessage from '../../components/messages/auth';
@@ -39,16 +39,16 @@ const NFTPage = () => {
         ))}
 
         <Modal show={showModal} cancel={() => setShowModal(false)}>
-          {content === 'send' && <TransferNFT></TransferNFT>}
-          {content === 'sell' && <SellNFT></SellNFT>}
+          {content === 'send' && <TransferNFT />}
+          {content === 'sell' && <SellNFT />}
         </Modal>
       </div>
     ) : (
       <h1>No NFts</h1>
     );
-  } else {
-    return <AuthMessage action='view your NFTs' />;
   }
+    return <AuthMessage action='view your NFTs' />;
+
 };
 
 export default NFTPage;

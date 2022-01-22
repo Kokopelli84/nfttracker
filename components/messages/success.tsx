@@ -1,21 +1,20 @@
-import { FunctionComponent } from 'react'
+import React from 'react'
 import Success from '../status/success';
 
 interface IProps {
   message: string,
-  info: string,
+  info?: string,
   link: string,
   linkText: string
 }
 
-const SuccessMessage: FunctionComponent<IProps> = ({ message, info, link, linkText }) => {
-  return (
+const SuccessMessage = ({ message, info, link, linkText }: IProps) => (
     <div>
       <div className="flex justify-center">
         <Success />
       </div>
       <div>
-        <div className="flex justify-center"></div>
+        <div className="flex justify-center" />
         <h1 className="text-2xl text-center font-semibold mb-5">{message}</h1>
         <p className="text-center text-lg">
           {info}
@@ -31,6 +30,5 @@ const SuccessMessage: FunctionComponent<IProps> = ({ message, info, link, linkTe
       </div>
     </div>
   );
-};
 
 export default SuccessMessage;

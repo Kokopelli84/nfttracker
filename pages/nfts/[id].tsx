@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
 import Image from 'next/image';
-import Button from '../../components/button';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 import { FaEthereum } from 'react-icons/fa';
 import { useTokenPrice } from 'react-moralis';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import Button from '../../components/button';
 import dollarValue from '../../helpers/dollarValue';
 
 const NFTDetailPage = () => {
@@ -34,10 +34,10 @@ const NFTDetailPage = () => {
   return nft ? (
     <div className="mx-44">
       <Button
-        text={`Go Back`}
+        text="Go Back"
         click={() => router.back()}
         classNames="mb-7"
-      ></Button>
+       />
       <div className="flex justify-between ">
         <div className="mr-10 ">
           <Image
@@ -46,7 +46,7 @@ const NFTDetailPage = () => {
             width={400}
             height={400}
             className="rounded-lg"
-          ></Image>
+           />
         </div>
         <div className="flex-1 ">
           <h1 className="text-3xl text-white mb-5">{nft.name}</h1>
@@ -55,7 +55,7 @@ const NFTDetailPage = () => {
             <div className="flex items-center text-white mb-5">
               <FaEthereum className="mr-1 text-3xl" />
               <div className="text-3xl mr-3">
-                {currentPrice ? currentPrice : 'Not For Sale'}
+                {currentPrice || 'Not For Sale'}
               </div>
               <div className="text-gray-400">
                 {currentPrice && `($${currentDollarValue})`}
@@ -65,7 +65,7 @@ const NFTDetailPage = () => {
             <div className="flex items-center text-white mb-5">
               <FaEthereum className="mr-1 text-3xl" />
               <div className="text-3xl mr-3">
-                {lastSale ? lastSale : 'No last sale'}
+                {lastSale || 'No last sale'}
               </div>
               <div className="text-gray-400">
                 {lastSale && `($${lastDollarValue})`}
@@ -82,7 +82,7 @@ const NFTDetailPage = () => {
                   width={30}
                   height={30}
                   className="rounded-full"
-                ></Image>
+                 />
               </div>
               <a
                 href={`https://rinkeby.etherscan.io/address/${nft.creator.address}`}

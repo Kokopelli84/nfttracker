@@ -1,9 +1,10 @@
-import '../styles/globals.css';
+import React from 'react';
 import { MoralisProvider } from 'react-moralis';
-import Nav from '../components/nav';
-import Account from '../components/account';
 import { Provider } from 'react-redux';
+import Account from '../components/account';
+import Nav from '../components/nav';
 import { store } from '../state/store';
+import '../styles/globals.css';
 
 const APP_ID = process.env.NEXT_PUBLIC_APP_ID;
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;

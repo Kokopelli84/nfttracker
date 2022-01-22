@@ -1,11 +1,11 @@
-import Input from './form/input';
-import Form from './form/form';
+import React, { ChangeEventHandler, useState } from 'react';
 import Button from './form/button';
-import React, { useState } from 'react';
+import Form from './form/form';
+import Input from './form/input';
 
 interface MintFormProps {
   title: string,
-  handleSubmit: () => void
+  handleSubmit: React.FormEventHandler<HTMLFormElement>
 }
 
 const MintForm = ({ title, handleSubmit }: MintFormProps) => {
@@ -13,9 +13,9 @@ const MintForm = ({ title, handleSubmit }: MintFormProps) => {
   const [descriptionInput, setDescriptionInput] = useState('');
   const [file, setFile] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const elName = e.target.name;
-    const value = e.target.value;
+    const { value } = e.target;
 
     if (elName === 'name') {
       setNameInput(value);
@@ -30,7 +30,7 @@ const MintForm = ({ title, handleSubmit }: MintFormProps) => {
   const disabledText = disabled && 'disabled';
 
   return (
-    <Form title={title} titleColour={'text-white'}>
+    <Form title={title} titleColour='text-white'>
       <Input
         name="name"
         placeholder="NFT Name"

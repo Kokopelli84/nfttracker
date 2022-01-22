@@ -1,6 +1,6 @@
-import { actionTypes } from '../actions/actionTypes';
+import actionTypes from '../actions/actionTypes';
 
-const modalReducer = (state = '', action) => {
+const modalReducer = (action, state = '') => {
   switch (action.type) {
     case actionTypes.CHANGE_CONTENT:
       return action.payload;

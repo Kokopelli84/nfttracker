@@ -1,7 +1,9 @@
-export const actionTypes = {
+const actionTypes = {
   FETCH: 'FETCH',
   CHANGE_CONTENT: 'CHANGE_CONTENT',
   CURRENT_UPDATE: 'CURRENT_UPDATE',
   TX_UPDATE: 'TX_UPDATE',
   RESPONSE_UPDATE: 'RESPONSE_UPDATE',
 };
+
+export default actionTypes;

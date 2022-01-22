@@ -1,7 +1,8 @@
-import { actionTypes } from '../actions/actionTypes';
+import actionTypes from '../actions/actionTypes';
+
 const initState = [];
 
-const nftReducer = (state = initState, action) => {
+const nftReducer = (action, state = initState) => {
   switch (action.type) {
     case actionTypes.FETCH:
       return action.payload;

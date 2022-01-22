@@ -1,6 +1,6 @@
-import { actionTypes } from '../actions/actionTypes';
+import actionTypes from '../actions/actionTypes';
 
-const currentReducer = (state = {}, action) => {
+const currentReducer = (action, state = {}) => {
   switch (action.type) {
     case actionTypes.CURRENT_UPDATE:
       return action.payload;

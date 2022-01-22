@@ -1,11 +1,10 @@
-import { FunctionComponent } from 'react'
+import React from 'react'
 
 interface IProps {
   action: string,
 }
 
-const AuthMessage: FunctionComponent<IProps> = ({ action }) => {
-  return (
+const AuthMessage = ({ action }:IProps) => (
     <div className="flex justify-center items-center h-full">
       <div className="bg-transparent border-2 border-gray-500 w-1/3 text-center rounded-lg py-10 h-fit text-white">
         <h1
@@ -17,6 +16,5 @@ const AuthMessage: FunctionComponent<IProps> = ({ action }) => {
       </div>
     </div>
   );
-};
 
 export default AuthMessage;

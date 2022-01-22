@@ -1,6 +1,7 @@
+import React from 'react';
 import { useMoralis } from 'react-moralis';
-import Button from './button';
 import prettyAddress from '../helpers/prettyAddress';
+import Button from './button';
 
 const Account = () => {
   const { authenticate, account } = useMoralis();

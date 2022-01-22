@@ -1,17 +1,15 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
-interface ContentWrapperProps {
+interface IProps {
   children: ReactNode
 }
 
-const ContentWrapper = ({ children }: ContentWrapperProps) => {
-  return (
+const ContentWrapper = ({ children }: IProps) => (
     <div className="flex justify-center items-center h-full">
       <div className="w-1/3 bg-transparent  border-2 border-gray-500 p-5 rounded-lg">
         {children}
       </div>
     </div>
   );
-};
 
 export default ContentWrapper;

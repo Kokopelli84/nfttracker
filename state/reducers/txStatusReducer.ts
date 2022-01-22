@@ -1,6 +1,6 @@
-import { actionTypes } from '../actions/actionTypes';
+import actionTypes from '../actions/actionTypes';
 
-const txStatusReducer = (state = '', action) => {
+const txStatusReducer = (action, state = '') => {
   switch (action.type) {
     case actionTypes.TX_UPDATE:
       return action.payload;

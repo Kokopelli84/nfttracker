@@ -1,6 +1,5 @@
+import React from 'react';
 import Head from 'next/head';
-import Modal from '../components/modal';
-import ContentWrapper from '../components/contentWrapper';
 
 export default function Home() {
   return (

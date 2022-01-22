@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useMoralis } from 'react-moralis';
-import { useSelector, useDispatch } from 'react-redux';
-import { changeTxStatus, changeResponse } from '../state/actions';
-import TxStatus from '../components/txStatus';
-import Modal from '../components/modal';
+import { useDispatch, useSelector } from 'react-redux';
 import ContentWrapper from '../components/contentWrapper';
 import MintForm from '../components/mintForm';
+import Modal from '../components/modal';
+import TxStatus from '../components/txStatus';
+import { changeResponse, changeTxStatus } from '../state/actions';
 
 const LazyMintPage = () => {
   const dispatch = useDispatch();
@@ -20,20 +20,20 @@ const LazyMintPage = () => {
     dispatch(changeTxStatus('pending'));
 
     try {
-      await Moralis.enableWeb3();
+      await (Moralis as any).enableWeb3();
       // Upload image to IPFS
       const imageFile = new Moralis.File(file.name, file);
       await imageFile.saveIPFS({ useMasterKey: true });
       const hash = imageFile.hash();
 
-      //Create metadata
+      // Create metadata
       const metadata = {
         name,
         description,
         image: `/ipfs/${hash}`,
       };
 
-      //Upload metadate to IPFS
+      // Upload metadate to IPFS
       const jsonFile = new Moralis.File('metadata.json', {
         base64: btoa(JSON.stringify(metadata)),
       });
@@ -41,7 +41,7 @@ const LazyMintPage = () => {
       await jsonFile.saveIPFS();
       const metadataHash = jsonFile.hash();
 
-      //Upload to Rarible
+      // Upload to Rarible
       await Moralis.Plugins.rarible
         .lazyMint({
           chain: 'rinkeby',

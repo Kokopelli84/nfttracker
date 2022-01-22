@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 interface IProps {
-  handleSubmit: React.FormEventHandler<HTMLFormElement>,
+  handleSubmit?: React.FormEventHandler<HTMLFormElement>,
   children: ReactNode,
   title: string,
   titleColour?: string,

@@ -1,22 +1,21 @@
-import { FunctionComponent } from 'react'
+import React from 'react'
 
 interface IProps {
-  text: string,
+  text: string | null,
   click: () => void,
-  classNames: string,
+  classNames?: string,
 }
 
-const Button: FunctionComponent<IProps> = ({ text, click, classNames }) => {
-  return (
+const Button = ({ text, click, classNames }: IProps) => (
     <button
       className={
-        'gradient p-3 rounded-md font-semibold text-white ' + classNames
+        `gradient p-3 rounded-md font-semibold text-white ${classNames}`
       }
       onClick={() => click()}
+      type="button"
     >
       {text}
     </button>
   );
-};
 
 export default Button;

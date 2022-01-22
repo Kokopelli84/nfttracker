@@ -1,7 +1,7 @@
+import React, { ChangeEventHandler, useState } from 'react';
 import { useMoralis } from 'react-moralis';
-import { useState } from 'react';
-import prettyAddress from '../helpers/prettyAddress';
 import { useSelector, useDispatch } from 'react-redux';
+import prettyAddress from '../helpers/prettyAddress';
 import Form from './form/form';
 import Button from './form/button';
 import Input from './form/input';
@@ -14,11 +14,11 @@ const TransferNFT = () => {
   const [address, setAddress] = useState('');
   const { current, response } = useSelector((state) => state);
 
-  const handleChange = (e) => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setAddress(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     dispatch(changeTxStatus('pending'));
     try {
@@ -29,16 +29,18 @@ const TransferNFT = () => {
         tokenId: current.token_id,
         awaitReceipt: false,
       };
-      await Moralis.authenticate({ signingMessage: 'hello world' });
-      const tx = await Moralis.transfer(options);
+      await (Moralis as any).authenticate({ signingMessage: 'hello world' });
+      const tx = await (Moralis as any).transfer(options);
 
-      tx.on('transactionHash', (hash) => {
+      tx.on('transactionHash', (hash: string) => {
         dispatch(changeResponse(hash));
         dispatch(changeTxStatus('success'));
       });
     } catch (err) {
-      dispatch(changeResponse(err.message));
-      dispatch(changeTxStatus('error'));
+      if(err instanceof Error) {
+        dispatch(changeResponse(err.message));
+        dispatch(changeTxStatus('error'));
+      }
     }
   };
 
@@ -50,19 +52,16 @@ const TransferNFT = () => {
   return (
     <TxStatus message={message} info={info} link={link} linkText={linkText}>
       <div>
-        <Form title={current.name} titleColour={'text-black'}>
+        <Form handleSubmit={handleSubmit} title={current.name} titleColour="text-black">
           <Input
             name="address"
             placeholder="Recipient"
             handleChange={handleChange}
             minLength="42"
-            textColour={'text-black'}
-          />
+            textColour="text-black"
+            />
           <Button
-            handleSubmit={handleSubmit}
-            state={address}
             action="Send"
-            minLength="42"
           />
         </Form>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface IProps {
-  disabled: boolean,
+  disabled?: boolean,
   action: string,
 }
 

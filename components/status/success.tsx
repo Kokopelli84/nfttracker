@@ -1,5 +1,6 @@
-const Success = () => {
-  return (
+import React from 'react';
+
+const Success = () => (
     <svg
       className="checkmark addClass"
       xmlns="http://www.w3.org/2000/svg"
@@ -19,6 +20,5 @@ const Success = () => {
       />
     </svg>
   );
-};
 
 export default Success;
