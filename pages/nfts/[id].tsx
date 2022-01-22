@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { FaEthereum } from 'react-icons/fa';
 import { useTokenPrice } from 'react-moralis';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'state/hooks';
 import Button from '../../components/button';
 import dollarValue from '../../helpers/dollarValue';
 
@@ -17,7 +17,7 @@ const NFTDetailPage = () => {
     fetchTokenPrice();
   }, [fetchTokenPrice]);
 
-  const nfts = useSelector((state) => state.nft);
+  const nfts = useAppSelector((state) => state.nft);
   const router = useRouter();
   const { id } = router.query;
   const nft = nfts.length && nfts.find((nft) => nft.id === parseInt(id));

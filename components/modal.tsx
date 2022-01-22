@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'state/hooks';
+import { changeResponse, changeTxStatus } from '../state/actions';
 import ClientOnlyPortal from './ClientOnlyPortal';
-import { changeTxStatus, changeResponse } from '../state/actions';
 
 interface Iprops {
   show: boolean,
@@ -11,7 +11,7 @@ interface Iprops {
 }
 
 const Modal = ({ show, cancel, children }: Iprops) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   if (show) {
     return (
       <ClientOnlyPortal selector="#modal">

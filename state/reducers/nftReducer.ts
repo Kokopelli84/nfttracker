@@ -1,8 +1,11 @@
+import { IAction } from 'ts/types';
+import { Nft } from 'ts/types/INFT';
+
 import actionTypes from '../actions/actionTypes';
 
-const initState = [];
+const initState: Nft[] = [];
 
-const nftReducer = (action, state = initState) => {
+const nftReducer = (state = initState, action: IAction<Nft[]>) => {
   switch (action.type) {
     case actionTypes.FETCH:
       return action.payload;

@@ -1,13 +1,13 @@
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 import { FaInfoCircle, FaPaperPlane, FaTag } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'state/hooks';
 import { changeModalContent } from '../state/actions';
 
 
 const NFTCard = ({ nft, handleShowModal }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const currentPrice = nft.sell_orders && nft.sell_orders[0].current_price;
 
   return (
