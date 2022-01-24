@@ -7,7 +7,10 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
-    "commit": "cz"
+    "commit": "cz",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js --ext jsx"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",
