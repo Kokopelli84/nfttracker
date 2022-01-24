@@ -1,29 +1,33 @@
 import { Dispatch } from 'redux';
+import getNFTs from 'services/apiClient';
+import { AppThunk } from 'state/store';
+import { IAction } from 'ts/types';
 import { Nft } from 'ts/types/INFT';
-import getNFTs from '../../helpers/apiClient';
 import actionTypes from './actionTypes';
 
-export const fetchNFTs = (address: string) => async (dispatch: Dispatch) => {
-    const response = await getNFTs(address);
+export const fetchNFTs = (address: string) => async (dispatch: Dispatch<IAction<Nft[]>>) => {
+  const response = await getNFTs(address);
 
-    dispatch({
-      type: actionTypes.FETCH,
-      payload: response.assets,
-    });
-  };
+  dispatch({
+    type: actionTypes.FETCH,
+    payload: response.assets,
+  });
+};
 
-export const changeModalContent = (content: string) => (dispatch: Dispatch) => {
-    dispatch({ type: actionTypes.CHANGE_CONTENT, payload: content });
-  };
+export const changeModalContent = (content: string) => (dispatch: Dispatch<IAction<string>>) => {
+  dispatch({ type: actionTypes.CHANGE_CONTENT, payload: content });
+};
 
-export const changeCurrentNFT = (current: Nft) => (dispatch: Dispatch) => {
+export const changeCurrentNFT =
+  (current: Nft): AppThunk =>
+  dispatch => {
     dispatch({ type: actionTypes.CURRENT_UPDATE, payload: current });
   };
 
-export const changeTxStatus = (status: string) => (dispatch: Dispatch<any>) => {
-    dispatch({ type: actionTypes.TX_UPDATE, payload: status });
-  };
+export const changeTxStatus = (status: string) => (dispatch: Dispatch<IAction<string>>) => {
+  dispatch({ type: actionTypes.TX_UPDATE, payload: status });
+};
 
-export const changeResponse = (res: string) => (dispatch: Dispatch) => {
-    dispatch({ type: actionTypes.RESPONSE_UPDATE, payload: res });
-  };
+export const changeResponse = (res: string) => (dispatch: Dispatch<IAction<string>>) => {
+  dispatch({ type: actionTypes.RESPONSE_UPDATE, payload: res });
+};

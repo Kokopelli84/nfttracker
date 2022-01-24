@@ -4,8 +4,8 @@ import Form from './form/form';
 import Input from './form/input';
 
 interface MintFormProps {
-  title: string,
-  handleSubmit: React.FormEventHandler<HTMLFormElement>
+  title: string;
+  handleSubmit: React.FormEventHandler<HTMLFormElement>;
 }
 
 const MintForm = ({ title, handleSubmit }: MintFormProps) => {
@@ -13,7 +13,7 @@ const MintForm = ({ title, handleSubmit }: MintFormProps) => {
   const [descriptionInput, setDescriptionInput] = useState('');
   const [file, setFile] = useState('');
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     const elName = e.target.name;
     const { value } = e.target;
 
@@ -27,27 +27,21 @@ const MintForm = ({ title, handleSubmit }: MintFormProps) => {
   };
 
   const disabled = !nameInput || !descriptionInput || !file;
-  const disabledText = disabled && 'disabled';
 
   return (
-    <Form title={title} titleColour='text-white'>
-      <Input
-        name="name"
-        placeholder="NFT Name"
-        handleChange={handleChange}
-        minLength="1"
-      />
+    <Form handleSubmit={(e) => handleSubmit(e, file, nameInput, descriptionInput)} title={title} titleColour="text-white">
+      <Input name="name" placeholder="NFT Name" handleChange={handleChange} minLength={1} />
       <Input
         name="description"
         placeholder="NFT Description"
         handleChange={handleChange}
-        minLength="1"
+        minLength={1}
       />
       <Input name="upload" type="file" handleChange={handleChange} />
 
       <Button
-        handleSubmit={(e) => handleSubmit(e, file, nameInput, descriptionInput)}
-        disabled={disabledText}
+        handleSubmit={e => handleSubmit(e, file, nameInput, descriptionInput)}
+        disabled={disabled}
         action="Mint"
       />
     </Form>

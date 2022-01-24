@@ -1,25 +1,27 @@
 import React, { ChangeEventHandler, useState } from 'react';
 import { useMoralis } from 'react-moralis';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from 'state/hooks';
 import prettyAddress from '../helpers/prettyAddress';
-import Form from './form/form';
+import { changeResponse, changeTxStatus } from '../state/actions';
 import Button from './form/button';
+import Form from './form/form';
 import Input from './form/input';
 import TxStatus from './txStatus';
-import { changeResponse, changeTxStatus } from '../state/actions';
 
 const TransferNFT = () => {
   const dispatch = useDispatch();
   const { Moralis } = useMoralis();
   const [address, setAddress] = useState('');
-  const { current, response } = useSelector((state) => state);
+  const { current, response } = useAppSelector(state => state);
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     setAddress(e.target.value);
   };
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
+    if (!current) return;
     dispatch(changeTxStatus('pending'));
     try {
       const options = {
@@ -37,12 +39,14 @@ const TransferNFT = () => {
         dispatch(changeTxStatus('success'));
       });
     } catch (err) {
-      if(err instanceof Error) {
+      if (err instanceof Error) {
         dispatch(changeResponse(err.message));
         dispatch(changeTxStatus('error'));
       }
     }
   };
+
+  if (!current) return null;
 
   const message = 'Request Successful';
   const info = 'View on BlockExplorer: ';
@@ -57,12 +61,10 @@ const TransferNFT = () => {
             name="address"
             placeholder="Recipient"
             handleChange={handleChange}
-            minLength="42"
+            minLength={42}
             textColour="text-black"
-            />
-          <Button
-            action="Send"
           />
+          <Button action="Send" />
         </Form>
       </div>
     </TxStatus>

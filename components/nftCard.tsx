@@ -2,12 +2,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaInfoCircle, FaPaperPlane, FaTag } from 'react-icons/fa';
-import { useAppDispatch } from 'state/hooks';
+import { useDispatch } from 'react-redux';
+import { Nft } from 'ts/types/INFT';
 import { changeModalContent } from '../state/actions';
 
+type IProps = {
+  nft: Nft;
+  handleShowModal: (id: number) => void;
+};
 
-const NFTCard = ({ nft, handleShowModal }) => {
-  const dispatch = useAppDispatch();
+const NFTCard = ({ nft, handleShowModal }: IProps) => {
+  const dispatch = useDispatch();
   const currentPrice = nft.sell_orders && nft.sell_orders[0].current_price;
 
   return (
@@ -21,7 +26,7 @@ const NFTCard = ({ nft, handleShowModal }) => {
           width={300}
           height={300}
           className="rounded-xl"
-         />
+        />
         {currentPrice && (
           <a
             href={`https://testnets.opensea.io/assets/${nft.asset_contract.address}/${nft.token_id}`}
@@ -35,11 +40,12 @@ const NFTCard = ({ nft, handleShowModal }) => {
       </div>
       <div className=" bg-transparent border border-gray-600 flex text-white place-content-around text-xl  p-3 mt-2 rounded-xl bg-tr">
         <Link href={`nfts/${nft.id}`} passHref>
-          <button>
+          <button type="button">
             <FaInfoCircle />
           </button>
         </Link>
         <button
+          type="button"
           onClick={() => {
             dispatch(changeModalContent('send'));
             handleShowModal(nft.id);
@@ -48,8 +54,9 @@ const NFTCard = ({ nft, handleShowModal }) => {
           <FaPaperPlane />
         </button>
         <button
+          type="button"
           className="disabled:cursor-not-allowed disabled:opacity-50"
-          disabled={currentPrice && 'disabled'}
+          disabled={!!currentPrice}
           onClick={() => {
             dispatch(changeModalContent('sell'));
             handleShowModal(nft.id);

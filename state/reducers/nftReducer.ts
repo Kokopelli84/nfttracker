@@ -1,6 +1,5 @@
 import { IAction } from 'ts/types';
 import { Nft } from 'ts/types/INFT';
-
 import actionTypes from '../actions/actionTypes';
 
 const initState: Nft[] = [];
