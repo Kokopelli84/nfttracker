@@ -1,23 +1,30 @@
 {
-  "root": true,
-  "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript", "prettier"],
-  "plugins": ["testing-library"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
+  "extends": ["next/core-web-vitals", "prettier"],
   "overrides": [
-    // Only uses Testing Library lint rules in test files
     {
-      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-      "extends": ["plugin:testing-library/react"]
+      "files": ["src/**/*.ts?(x)"],
+      "extends": ["airbnb-typescript", "next/core-web-vitals", "prettier"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+      },
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "react/jsx-props-no-spreading": "off",
+        "react/function-component-definition": "off",
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",
+        "react/require-default-props": "off",
+        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "@typescript-eslint/default-param-last": "off"
+      }
     }
-  ],
-  "rules": {
-    "react/function-component-definition": "off",
-    "react/require-default-props": "off",
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/default-param-last": "off",
-    "react/jsx-props-no-spreading": "off"
-  }
+  ]
 }
