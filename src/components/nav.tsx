@@ -7,9 +7,8 @@ import { RiZzzFill } from 'react-icons/ri';
 const Nav = () => {
   const router = useRouter();
 
-  const checkPath = (path: string) => path === router.pathname
-      ? 'text-white mb-5 opacity-100'
-      : 'mb-5 opacity-75';
+  const checkPath = (path: string) =>
+    path === router.pathname ? 'text-white mb-5 opacity-100' : 'mb-5 opacity-75';
 
   return (
     <div className="h-full">

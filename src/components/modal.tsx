@@ -39,8 +39,7 @@ const Modal = ({ show, cancel, children }: Iprops) => {
               dispatch(changeTxStatus(''));
               dispatch(changeResponse(''));
             }}
-            type="button"
-          >
+            type="button">
             <FaTimes className="inline" />
           </button>
           {children}

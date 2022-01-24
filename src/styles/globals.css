@@ -43,8 +43,7 @@ a {
   stroke-miterlimit: 10;
   margin: 1.5rem 0;
   box-shadow: inset 0px 0px 0px #7ac142;
-  animation: fill 0.4s ease-in-out 0.4s forwards,
-    scale 0.3s ease-in-out 0.9s both;
+  animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
 }
 
 .checkmark__check.animateElement {
@@ -94,8 +93,7 @@ a {
   stroke-miterlimit: 10;
   margin: 1.5rem 0;
   box-shadow: inset 0px 0px 0px #ff0000;
-  animation: fillred 0.4s ease-in-out 0.4s forwards,
-    scale 0.3s ease-in-out 0.9s both;
+  animation: fillred 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
 }
 
 .crossmark__check.animateElement {
@@ -145,8 +143,7 @@ a {
 .loader-path {
   stroke-dasharray: 150, 200;
   stroke-dashoffset: -10;
-  -webkit-animation: dash 1.5s ease-in-out infinite,
-    color 6s ease-in-out infinite;
+  -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
   animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
   stroke-linecap: round;
 }
@@ -241,11 +238,7 @@ a {
 }
 
 .gradient {
-  background: linear-gradient(
-    168deg,
-    rgb(52, 65, 121) 3.98%,
-    rgb(68, 94, 208) 100%
-  );
+  background: linear-gradient(168deg, rgb(52, 65, 121) 3.98%, rgb(68, 94, 208) 100%);
 }
 
 .text-white {
