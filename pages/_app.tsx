@@ -1,3 +1,4 @@
+import { AppProps } from 'next/app';
 import React from 'react';
 import { MoralisProvider } from 'react-moralis';
 import { Provider } from 'react-redux';
@@ -6,10 +7,10 @@ import Nav from '../components/nav';
 import { store } from '../state/store';
 import '../styles/globals.css';
 
-const APP_ID = process.env.NEXT_PUBLIC_APP_ID;
-const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+const APP_ID = process.env.NEXT_PUBLIC_APP_ID!;
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL!;
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
