@@ -1,8 +1,8 @@
 export interface NftDetail extends Nft {
   currentPrice?: number;
-  currentDollarValue?: number;
+  currentDollarValue?: string;
   lastSale?: number;
-  lastDollarValue?: number;
+  lastDollarValue?: string;
 }
 
 export interface Nft {
@@ -37,7 +37,7 @@ export interface Nft {
 }
 
 export interface SellOrder {
-  current_price?: number;
+  current_price?: string;
 }
 
 export interface AssetContract {
