@@ -20,12 +20,6 @@ const MintForm = () => {
 
   const { response } = useAppSelector(state => state);
 
-  const message = 'NFT Successfully Minted';
-  const res = (response as any).data && (response as any).data.result;
-  const link =
-    res && `https://rinkeby.rarible.com/token/flow/${res.tokenAddress}:${res.tokenId}?tab=details`;
-  const linkText = 'View on Rarible';
-
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     const elName = e.target.name;
     const { value } = e.target;
@@ -47,7 +41,7 @@ const MintForm = () => {
     if (!nameInput || !descriptionInput || !file) return;
 
     try {
-      await (Moralis as any).enableWeb3();
+      await Moralis.enableWeb3();
       // Upload image to IPFS
 
       type MoralisFile = typeof Moralis.File & {
@@ -56,7 +50,6 @@ const MintForm = () => {
       };
 
       const imageFile = new Moralis.File(file.name, file) as unknown as MoralisFile;
-
       await imageFile.saveIPFS({ useMasterKey: true });
       const hash = imageFile.hash();
 
@@ -69,6 +62,7 @@ const MintForm = () => {
 
       // Upload metadate to IPFS
       const jsonFile = new Moralis.File('metadata.json', {
+        // base64: Buffer.from(JSON.stringify(metadata), 'base64').toString('base64'),
         base64: btoa(JSON.stringify(metadata)),
       }) as unknown as MoralisFile;
 
@@ -84,7 +78,7 @@ const MintForm = () => {
           tokenUri: `ipfs/${metadataHash}`,
           royaltiesAmount: 0,
         })
-        .then((raribleRes: string) => {
+        .then((raribleRes: any) => {
           dispatch(changeResponse(raribleRes));
           dispatch(changeTxStatus('success'));
         });
@@ -95,6 +89,12 @@ const MintForm = () => {
       }
     }
   };
+
+  const message = 'NFT Successfully Minted';
+  const res = (response as any).data && (response as any).data.result;
+  const link =
+    res && `https://rinkeby.rarible.com/token/flow/${res.tokenAddress}:${res.tokenId}?tab=details`;
+  const linkText = 'View on Rarible';
 
   const disabled = !nameInput || !descriptionInput || !file;
 
