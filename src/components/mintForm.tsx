@@ -44,12 +44,12 @@ const MintForm = () => {
       await Moralis.enableWeb3();
       // Upload image to IPFS
 
-      // type MoralisFile = typeof Moralis.File & {
-      //   hash: () => string;
-      //   saveIPFS: (options?: MoralisFileSaveOptions & { useMasterKey: boolean }) => Promise<File>;
-      // };
+      type MoralisFile = typeof Moralis.File & {
+        hash: () => string;
+        saveIPFS: (options?: MoralisFileSaveOptions & { useMasterKey: boolean }) => Promise<File>;
+      };
 
-      const imageFile = new Moralis.File(file.name, file);
+      const imageFile = new Moralis.File(file.name, file) as unknown as MoralisFile;
       await imageFile.saveIPFS({ useMasterKey: true });
       const hash = imageFile.hash();
 
@@ -64,7 +64,7 @@ const MintForm = () => {
       const jsonFile = new Moralis.File('metadata.json', {
         // base64: Buffer.from(JSON.stringify(metadata), 'base64').toString('base64'),
         base64: btoa(JSON.stringify(metadata)),
-      });
+      }) as unknown as MoralisFile;
 
       await jsonFile.saveIPFS();
       const metadataHash = jsonFile.hash();
