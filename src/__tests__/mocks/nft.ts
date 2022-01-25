@@ -87,7 +87,7 @@ export const mockNFT: Nft = {
     address: '0x7dc17d8fa3e68ab2b2f72eb2872f64e7b8e00703',
     config: '',
   },
-  sell_orders: [],
+  sell_orders: null,
   creator: {
     user: {
       username: null,

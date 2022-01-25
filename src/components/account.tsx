@@ -8,6 +8,16 @@ const Account = () => {
   const formattedAccount = account && prettyAddress(account);
   const buttonText = account ? formattedAccount : 'Authenticate';
 
+  // const [formattedAccount, setFormattedAccount] = useState('Authenticate');
+
+  // useEffect(() => {
+  //   if (isAuthenticated && !account) {
+  //     console.log(account, isAuthenticated);
+  //     //setFormattedAccount(prettyAddress(account));
+  //     refetchUserData();
+  //   }
+  // }, [account, isAuthenticated]);
+
   return (
     <div className="auth flex flex-row justify-end text-white pt-7 px-20 w-full">
       <Button text={buttonText} click={authenticate} />

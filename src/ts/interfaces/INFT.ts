@@ -25,7 +25,7 @@ export interface Nft {
   decimals: number;
   token_metadata: string;
   owner: Creator;
-  sell_orders: SellOrder[];
+  sell_orders: SellOrder[] | null;
   creator: Creator;
   traits: Trait[];
   last_sale: LastSale;

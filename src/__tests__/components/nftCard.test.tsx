@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import NftCard from '@/components/nftCard';
 import { mockNFT } from '../mocks/nft';
+import { Provider } from 'react-redux';
+import { store } from '@/state/store';
 
 describe('Submit Button component', () => {
   const mockProps = {
@@ -9,8 +11,12 @@ describe('Submit Button component', () => {
   };
 
   test('should render buttons', () => {
-    render(<NftCard nft={mockProps.nft} handleShowModal={mockProps.handleShowModal} />);
+    render(
+      <Provider store={store}>
+        <NftCard nft={mockProps.nft} handleShowModal={mockProps.handleShowModal} />
+      </Provider>
+    );
 
-    screen.getByRole('button');
+    screen.getAllByRole('button');
   });
 });
