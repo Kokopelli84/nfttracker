@@ -1,4 +1,5 @@
 import { Nft } from '@/ts/interfaces/INFT';
+import 'cross-fetch/polyfill';
 
 const BASE_URL = 'https://testnets-api.opensea.io';
 

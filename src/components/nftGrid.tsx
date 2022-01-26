@@ -30,6 +30,7 @@ const NftGrid = ({ nfts }: Props) => {
     <div
       className="grid md:grid-cols-3 md:grid-rows-auto  lg:grid-cols-5 lg:grid-rows-auto  gap-5  overflow-auto
   ">
+      <h1>nftgrid</h1>
       {nfts!.map(nft => (
         <NFTCard key={nft.id} nft={nft} handleShowModal={handleShowModal} />
       ))}
