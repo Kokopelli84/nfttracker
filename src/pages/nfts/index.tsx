@@ -10,13 +10,21 @@ const NFTPage = () => {
   const dispatch = useDispatch();
   const nfts = useAppSelector(state => state.nft);
 
-  const { account, isAuthenticated } = useMoralis();
+  const { account, isAuthenticated, Moralis } = useMoralis();
 
   useEffect(() => {
     if (account) {
       dispatch(fetchNFTs(account));
     }
   }, [account, dispatch]);
+
+  useEffect(() => {
+    (async () => {
+      if (isAuthenticated && !account) {
+        await Moralis.enableWeb3();
+      }
+    })();
+  }, [account, isAuthenticated, Moralis]);
 
   if (account && isAuthenticated) {
     return <NftGrid nfts={nfts} />;
