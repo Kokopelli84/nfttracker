@@ -4,6 +4,10 @@ const actionTypes = {
   CURRENT_UPDATE: 'CURRENT_UPDATE',
   TX_UPDATE: 'TX_UPDATE',
   RESPONSE_UPDATE: 'RESPONSE_UPDATE',
+  // Async
+  ASYNC_LOADING: 'ASYNC_LOADING',
+  ASYNC_DONE: 'ASYNC_DONE',
+  ASYNC_ERROR: 'ASYNC_ERROR',
 };
 
 export default actionTypes;

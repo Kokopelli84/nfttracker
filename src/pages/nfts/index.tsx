@@ -1,5 +1,6 @@
 import AuthMessage from '@/components/messages/auth';
 import NftGrid from '@/components/nftGrid';
+import Pending from '@/components/status/pending';
 import { fetchNFTs } from '@/state/actions';
 import { useAppSelector } from '@/state/hooks';
 import React, { useEffect } from 'react';
@@ -9,8 +10,9 @@ import { useDispatch } from 'react-redux';
 const NFTPage = () => {
   const dispatch = useDispatch();
   const nfts = useAppSelector(state => state.nft);
+  const { loading } = useAppSelector(state => state.async);
 
-  const { account, isAuthenticated, Moralis } = useMoralis();
+  const { account, isAuthenticated } = useMoralis();
 
   useEffect(() => {
     if (account) {
@@ -18,13 +20,7 @@ const NFTPage = () => {
     }
   }, [account, dispatch]);
 
-  useEffect(() => {
-    (async () => {
-      if (isAuthenticated && !account) {
-        await Moralis.enableWeb3();
-      }
-    })();
-  }, [account, isAuthenticated, Moralis]);
+  if (loading) return <Pending />;
 
   if (account && isAuthenticated) {
     return <NftGrid nfts={nfts} />;
