@@ -8,11 +8,12 @@ import { useMoralis } from 'react-moralis';
 import { useDispatch } from 'react-redux';
 
 const NFTPage = () => {
-  const dispatch = useDispatch();
-  const nfts = useAppSelector(state => state.nft);
-  const { loading } = useAppSelector(state => state.async);
-
   const { account, isAuthenticated } = useMoralis();
+  const dispatch = useDispatch();
+  const {
+    nft: nfts,
+    async: { loading },
+  } = useAppSelector(state => state);
 
   useEffect(() => {
     if (account) {
