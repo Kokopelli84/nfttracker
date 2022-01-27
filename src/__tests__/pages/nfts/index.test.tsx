@@ -29,7 +29,10 @@ describe('NftPage', () => {
       isAuthenticated: true,
     }));
 
-    useAppSelector.mockImplementationOnce(() => []);
+    useAppSelector.mockImplementationOnce(() => ({
+      nft: [],
+      async: { loading: false },
+    }));
 
     render(
       <Provider store={store}>
@@ -46,7 +49,10 @@ describe('NftPage', () => {
       isAuthenticated: true,
     }));
 
-    useAppSelector.mockImplementationOnce(() => [mockNFT]);
+    useAppSelector.mockImplementationOnce(() => ({
+      nft: [mockNFT],
+      async: { loading: false },
+    }));
 
     render(
       <Provider store={store}>
@@ -54,6 +60,6 @@ describe('NftPage', () => {
       </Provider>
     );
 
-    expect(screen.getByText(/nftgrid/i)).toBeInTheDocument();
+    expect(screen.getByRole('img')).toBeInTheDocument();
   });
 });
