@@ -20,7 +20,7 @@ Major changes in this fork include:
 
 | Name               |           Description           |
 | :----------------- | :-----------------------------: |
-| React (CRA)        |        SPA JS Framework         |
+| Next.js        |        React SSR Framework         |
 | Moralis            |            Web3 SDK             |
 | Metamask           |         Authentication          |
 | Redux              |            App store            |
