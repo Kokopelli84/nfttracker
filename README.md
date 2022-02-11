@@ -1,34 +1,98 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nifty Tracker
 
-## Getting Started
+Created as part of Codework's senior curriculum, Nifty Tracker is an app that allows users to sell,
+track and lazy mint NFT's. This is a fork of [brandond98](https://github.com/brandond98)'s
+[Nifty Tracker](https://github.com/brandond98/nfttracker).
 
-First, run the development server:
+## Changes
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Major changes in this fork include:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Complete refactoring to Typescript
+- Testing
+- Linting
+- Precommit hooks
+- Conventional commits
+- More modular React components
+- Bug fixes related to authentication and errors on page refreshes
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Techstack
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+| Name               |           Description           |
+| :----------------- | :-----------------------------: |
+| React (CRA)        |        SPA JS Framework         |
+| Moralis            |            Web3 SDK             |
+| Metamask           |         Authentication          |
+| Redux              |            App store            |
+| Husky              |        Enables git hooks        |
+| Lint-staged        |    Run tasks on staged files    |
+| Jest/React-testing |         Testing library         |
+| Opensea API        | Used to fetch addition NFT info |
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Project Structure
 
-## Learn More
+| Folder           |             Description             |
+| :--------------- | :---------------------------------: |
+| `src/pages`      |            Nextjs routes            |
+| `src/components` |          React components           |
+| `src/helpers`    |        App helper functions         |
+| `src/services`   |             Api client              |
+| `src/state`      |             Redux store             |
+| `src/styles`     |           App css styles            |
+| `src/__tests__`  | Testing with Jest/React-testing lib |
+| `src/ts`         |          Typescript types           |
 
-To learn more about Next.js, take a look at the following resources:
+## Development Guide
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To set up a development environment you need to have [MetaMask](https://metamask.io/) chrome
+extension installed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To set up the [Moralis SDK](https://moralis.io/), you'll need a running Moralis server. Follow these
+steps to create one and set up the environment variables:
 
-## Deploy on Vercel
+1. Create a [Moralis account](https://admin.moralis.io/register).
+2. Once in the dashboard, create a server in the `Mainnet`.
+3. Select the `Eth blockchain (Mainnet)`.
+4. Once the server is created, view your server details to get the access credentials.
+5. Create a `.env.local` in the root of this project and add the following environment variables:
+   - `NEXT_PUBLIC_APP_ID=your Moralis Application Id`
+   - `NEXT_PUBLIC_SERVER_URL=your Moralis Server Url`
+6. Install the following Moralis [plugins](https://moralis.io/plugins/):
+   - Rarible NFT Tools
+   - OpenSea – Buy and Sell NFTs
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To start the development environment follow these steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Install the dependencias by runnning `npm install` in the root of the project.
+2. Start the development server by running `npm run dev`.
+
+## Contributing
+
+This project is using the
+[conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) standard. Please
+follow these steps to ensure your commit messages are standardized:
+
+1. Make sure your shell path is in the root of the project (not inside any of the packages).
+2. Run `npm install`.
+3. Stage the files you are committing with `git add [files]`.
+4. Run `npm run commit`. This will start an interactive prompt that generates your commit message:
+   1. Select the type of change.
+   2. Type the scope. This is either `global` for project-wide changes or one of the packages
+      (kibbeh, shawarma etc.).
+   3. Write a short, imperative tense description of the change.
+   4. If the above was not sufficient, you may now write a longer description of your change
+      (otherwise press enter to leave blank).
+   5. y or n for whether there are any breaking changes (e.g. changing the props of a component,
+      changing the JSON structure of an API response).
+   6. y or n for whether this change affects an open issue, if positive you will be prompted to
+      enter the issue number.
+5. Your staged files will be checked for types, linting and format errors and the test suite will
+   run. If one of these tasks fail, please review and update your code before trying to commit
+   again.
+6. Your commit message has now been created, you may push to your fork and open a pull request.
+
+## Authors
+
+- [Brandon Dickson](https://github.com/brandond98)
+- [Oriol Cervantes ](https://github.com/codecloud9)
+- [Nelson Fleig](https://github.com/Kokopelli84)
