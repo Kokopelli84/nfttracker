@@ -90,3 +90,9 @@ follow these steps to ensure your commit messages are standardized:
    run. If one of these tasks fail, please review and update your code before trying to commit
    again.
 6. Your commit message has now been created, you may push to your fork and open a pull request.
+
+## Authors
+
+- [Brandon Dickson](https://github.com/brandond98)
+- [Oriol Cervantes ](https://github.com/codecloud9)
+- [Nelson Fleig](https://github.com/Kokopelli84)
