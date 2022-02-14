@@ -1,8 +1,7 @@
 # Nifty Tracker
 
 Created as part of Codework's senior curriculum, Nifty Tracker is an app that allows users to sell,
-track and lazy mint NFT's. This is a fork of [brandond98](https://github.com/brandond98)'s
-[Nifty Tracker](https://github.com/brandond98/nfttracker).
+track and lazy mint NFT's.
 
 ## Changes
 
