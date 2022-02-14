@@ -1,7 +1,7 @@
 # Nifty Tracker
 
-Created as part of Codework's senior curriculum, Nifty Tracker is an app that allows users to sell,
-track and lazy mint NFT's.
+NiftyTracker is an app that allows user to view their NFT portfolio, LazyMint NFT's & track wallets of interest with telegram notifications.
+
 
 ## Changes
 
