@@ -95,4 +95,4 @@ follow these steps to ensure your commit messages are standardized:
 
 - [Brandon Dickson](https://github.com/brandond98)
 - [Oriol Cervantes ](https://github.com/codecloud9)
-- [Nelson Fleig](https://github.com/Kokopelli84)
+- [Nelson Fleig](https://github.com/nelsonfleig)
